@@ -28,7 +28,7 @@ Dataset contains
 1. Trainging and Testing images.
 2. CSV file containing image_name and corresponding label.
 
-## Steps involved to detect keypoints
+## Steps involved to classify a hand gesture
 1. Downloading dataset: [Link to download dataset](https://www.kaggle.com/datamunge/sign-language-mnist?select=amer_sign3.png)
 2. Dataset visualization: Visualizing one image from the training dataset. </br>
 ![Screenshot 2021-02-28 at 19 57 23](https://user-images.githubusercontent.com/26361028/109421875-2dfb5700-79ff-11eb-96d5-fa6cab4bcfe4.png)
