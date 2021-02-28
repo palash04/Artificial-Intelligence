@@ -39,3 +39,4 @@ Dataset contains
 ![Screenshot 2021-02-28 at 20 45 31](https://user-images.githubusercontent.com/26361028/109423555-e6c49480-7a05-11eb-8b11-9971ceeaeb2d.png)
 
 * SOS and EOS are the start of string and end of string labels.
+*  The model can be trained further to get better captions.
