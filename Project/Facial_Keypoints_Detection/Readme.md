@@ -30,7 +30,7 @@ Dataset contains
 1. Trainging and Testing images.
 2. Training and Testing csv files having keypoints associated with each images.
 
-## Setps involved to detect keypoints
+## Steps involved to detect keypoints
 1. Downloading dataset: [Link to download dataset](https://s3.amazonaws.com/video.udacity-data.com/topher/2018/May/5aea1b91_train-test-data/train-test-data.zip)
 2. Dataset visualization: Visualizing one image from the training dataset 
 ![Screenshot 2021-02-28 at 18 35 44](https://user-images.githubusercontent.com/26361028/109419497-c5f34380-79f3-11eb-8bf6-d0ce2b45199c.png)
