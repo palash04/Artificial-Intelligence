@@ -26,12 +26,44 @@ I had tested this project with the following dataset released public by the auth
 
 ## Arhchitecture
 
+- **Generator**
+  - I had used a `U-Net` ([arXiv:1505.04597](https://arxiv.org/abs/1505.04597)) like architecture for the generator, which is simply an encoder-decoder architecture with skip connections in between them.
 
+![U-Net](https://user-images.githubusercontent.com/26361028/129304211-82ba1f2f-75d4-4bf0-b421-7eb8d2a74518.png)
+
+<p align="center">[Image Courtesy: Author's paper]</p>
+
+  - Precisely, the encoder channels vary as  `in_channels -> 64 -> 128 -> 256 -> 512 -> 512 -> 512 -> 512` and the decoder's channel sizes vary accordingly.
+
+- **Discriminator**
+  - For the discriminator, a `PatchGAN` is used. A `PatchGAN` is similar to a common discriminator, except that it tries to classify each patch of N × N size whether it is real or fake.
+  - In our case, we take N = 70. This is in our code achieved by using a Convolutional network whose receptive field is 70 on the input image to the discriminator. Mathematically, this can be checked to be equivalent to what has been described in the paper.
+  - The channel sizes in our `PatchGAN ` vary as `in_channels -> 64 -> 128 -> 256 -> out_channels`.
+
+- **Encoder**
+  - This is the additional architecture incorporated by me, in order to alleviate the problem of mode collapse.
+  - It takes in a pair of `positive sample` and a `negative sample`, and outputs corresponding vectors of `d` dimensions each.
+  - The L1 norm between vectors is maximized to achieve diverse results.
+  - Here, positive sample is a pair of fake generated image `B_hat` and the latent noise `Z ~ N(0,1)` which is responsible for generating `B_hat` and, negative sample is a pair of fake generated image `B_hat` and the latent noise `Z' ~ N(0,1)` which is not responsible for generating `B_hat`
+
+
+![Architecture](https://user-images.githubusercontent.com/26361028/129305392-68593736-fda8-47dc-9659-785b92c710ff.png)
+<p align="center">[The above figure summarizes all three architectures used.]</p>
 
 ## Results:
+
+![Result1](https://user-images.githubusercontent.com/26361028/129305645-e1db5304-83e7-4b93-b896-3ead15cdd464.png)
+![Result2](https://user-images.githubusercontent.com/26361028/129305664-76bda638-c205-4355-b0b2-3df7b580984e.png)
+
+## Note
+Result format [Source - Generated_1 - Generated_2 - Generated_3]
+
+## Conclusion:
+As we can see from the results generated, we are indeed getting diverse results, but the percentage of diverse results is less, inorder to incorporate more diverse results, we can have `k` negative samples for every positive sample while training the GAN architecture.
+
 
 ## Authors:
 * Palash Mahendra Kamble - [palash04](https://github.com/palash04/)
 
 ## Acknowledgements
-* I would like to thank the authors of the paper for the amazing public dataset found [here](http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/)
+* I would like to thank the authors of the paper for the public dataset found [here](http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/)
